@@ -9,18 +9,37 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.0/purify.min.js"></script>
     <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-corner {
+            display: none;
+        }
+
+        ::-webkit-scrollbar-track {
+            display: none;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6d6d6d9d;
+            border-radius: 7px;
+            transition: all 0.2s ease-in-out;
+        }
+
         body {
             margin: 0;
             padding: 0;
             display: flex;
             height: 100vh;
-            background-color: #36393f;
+            background-color: #2b2b2b;
             color: white;
             font-family: Arial, sans-serif;
         }
         .sidebar {
             width: 240px;
-            background-color: #2f3136;
+            background-color: #272727;
             padding: 10px;
             transition: width 0.3s ease;
             overflow-y: auto;
@@ -37,19 +56,23 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            background-color: #36393f;
+            background-color: #363636;
         }
         .messages {
             flex: 1;
-            padding: 20px;
             overflow-y: auto;
             scroll-behavior: smooth;
         }
         .message {
             margin-bottom: 10px;
+            padding: 20px;
             opacity: 0;
+            transition: background-color .06s ease-in-out;
             transform: translateY(20px);
             animation: fadeInUp 0.3s ease forwards;
+        }
+        .message:hover {
+            background-color: #535353;
         }
         @keyframes fadeInUp {
             to {
@@ -59,21 +82,21 @@
         }
         .message .username {
             font-weight: bold;
-            color: #7289da;
+            color: #72da9a;
         }
         .message .timestamp {
-            color: #72767d;
-            font-size: 0.8em;
+            color: #858585;
+            font-size: 0.75em;
             margin-left: 10px;
         }
         .message-input {
             padding: 10px;
-            background-color: #40444b;
-            border-top: 1px solid #2f3136;
+            background-color: #2b2b2b;
+            border-top: 1px solid #464d4a;
         }
         .message-input textarea {
             width: 100%;
-            background-color: #40444b;
+            background-color: #353535;
             border: none;
             color: white;
             padding: 10px;
@@ -82,12 +105,13 @@
             transition: background-color 0.3s ease;
         }
         .message-input textarea:focus {
-            background-color: #484c54;
+            background-color: #444444;
             outline: none;
         }
         .server, .channel {
             padding: 10px;
             cursor: pointer;
+            background-color: #2c2c2c;
             border-radius: 5px;
             margin-bottom: 5px;
             transition: background-color 0.3s ease, transform 0.2s ease;
@@ -96,7 +120,7 @@
             text-overflow: ellipsis;
         }
         .server:hover, .channel:hover {
-            background-color: #40444b;
+            background-color: #494949;
             transform: translateX(5px);
         }
         .channel {
@@ -106,7 +130,7 @@
         .channel::before {
             content: "#";
             margin-right: 5px;
-            color: #7289da;
+            color: #72da9a;
         }
         .form-container {
             margin-bottom: 20px;
@@ -129,30 +153,31 @@
             padding: 10px;
             border-radius: 5px;
             border: none;
-            background-color: #40444b;
+            background-color: #363636;
             color: white;
             transition: background-color 0.3s ease;
         }
         .form-container input:focus {
-            background-color: #484c54;
+            background-color: #555555;
             outline: none;
         }
         .form-container button {
             width: 100%;
             padding: 10px;
             border-radius: 5px;
-            border: none;
-            background-color: #7289da;
-            color: white;
+            border: 1px solid #19f5aa;
+            background-color: transparent;
+            color: #19f5aa;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
         .form-container button:hover {
-            background-color: #677bc4;
+            background-color: #19f5aa;
+            color: #272727;
         }
         .toggle-sidebar {
             display: none;
-            background-color: #7289da;
+            background-color: #72da9a;
             color: white;
             border: none;
             padding: 10px;
@@ -162,7 +187,7 @@
         }
         .back-button {
             display: none; /* Escondido por padrão */
-            background-color: #7289da;
+            background-color: #72da9a;
             color: white;
             border: none;
             padding: 10px;
@@ -172,20 +197,21 @@
             transition: background-color 0.3s ease;
         }
         .back-button:hover {
-            background-color: #677bc4;
+            background-color: #19f5aa;
         }
         .create-button {
-            background-color: #7289da;
-            color: white;
-            border: none;
-            padding: 10px;
+            background-color: transparent;
+            color: #19f5aa;
+            border: solid 1px #19f5aa;
+            padding: 5px;
             border-radius: 5px;
             cursor: pointer;
             margin-bottom: 10px;
             transition: background-color 0.3s ease;
         }
         .create-button:hover {
-            background-color: #677bc4;
+            color: #272727;
+            background-color: #19f5aa;
         }
         @media (max-width: 768px) {
             .sidebar {
@@ -236,6 +262,42 @@
                 content: "Carregando mensagens...";
             }
         }
+        /* Reply feature */
+        .reply-button {
+            display: none;
+            background-color: #444444;
+            padding: 3px;
+            border-radius: 5px;
+            user-select: none;
+            transform: translateY(0px);
+            transition: all .2s ease-in-out;
+        }
+        .reply-button:hover {
+            background-color: #2b2b2b;
+            cursor: pointer;
+            transform: translateY(-5px);
+        }
+        .message:hover > .reply-button {
+            position:absolute;
+            top: 1em;
+            right: 1em;
+            display:flex;
+        }
+        .close-reply {
+            display: none;
+        }
+        .reply-box {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            padding: 1px;
+            background-color: #333333;
+            border-radius: 5px;
+        }
+        .reply-box:hover > .close-reply {
+            display: block;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
@@ -243,7 +305,7 @@
     <div class="sidebar" id="sidebar">
         <button class="toggle-sidebar" id="toggle-sidebar">☰</button>
         <button class="back-button" id="back-button">← Voltar</button>
-        <h4>Servidores</h4>
+        <h4><b>Servidores</b></h4>
         <div class="form-container" id="create-server-form">
             <input type="text" id="server-name" placeholder="Nome do servidor">
             <input type="text" id="server-description" placeholder="Descrição do servidor">
@@ -251,9 +313,21 @@
         </div>
         <div id="servers-list">
             <!-- Servidores serão carregados aqui -->
+            <div class="server">
+                Server do pedrinho
+            </div>
+            <div class="server">
+                Panelinha braba
+            </div>
+            <div class="server">
+                +18
+            </div>
+            <div class="server">
+                Os patos
+            </div>
         </div>
         <hr>
-        <h4>Canais</h4>
+        <h5>Canais</h5>
         <div class="form-container" id="create-channel-form">
             <input type="text" id="channel-name" placeholder="Nome do canal">
             <input type="text" id="channel-description" placeholder="Descrição do canal">
@@ -261,6 +335,9 @@
         </div>
         <div id="channels-list">
             <!-- Canais serão carregados aqui -->
+            <div class="channel">
+                Rolas trevosas
+            </div>
         </div>
         <button class="create-button" id="show-create-server">Criar Servidor</button>
         <button class="create-button" id="show-create-channel" style="display: none;">Criar Canal</button>
@@ -270,6 +347,54 @@
     <div class="main-content">
         <div class="messages" id="messages">
             <!-- Mensagens serão carregadas aqui -->
+            <div class="message">
+                <span class="reply-button">Reply</span>
+                <span class="username">pedro</span>
+                    <span class="timestamp">17:09</span>
+                    <div>odeio OpenSource</div> 
+            </div>
+            <div class="message">
+                <span class="reply-button">Reply</span>
+                <span class="username">kael</span>
+                    <span class="timestamp">17:34</span>
+                    <div>amo OpenSource</div> 
+            </div>
+            <div class="message">
+                <span class="reply-button">Reply</span>
+                <span class="username">Humberto (op3n)</span>
+                    <span class="timestamp">17:36</span>
+                    <div>amo OpenSource</div> 
+            </div>
+            <div class="message">
+                <span class="reply-button">Reply</span>
+                <span class="username">auryy</span>
+                    <span class="timestamp">18:02</span>
+                    <div>que?</div> 
+            </div>
+            <div class="message">
+                <span class="reply-button">Reply</span>
+                <span class="username">Humberto (op3n)</span>
+                    <span class="timestamp">18:02</span>
+                    <div>amo OpenSource</div> 
+            </div>
+            <div class="message">
+                <span class="reply-button">Reply</span>
+                <span class="username">auryy</span>
+                    <span class="timestamp">18:03</span>
+                    <div>tbm amo agora cala a boca</div> 
+            </div>
+            <div class="message">
+                <span class="reply-button">Reply</span>
+                <span class="username">Humberto (op3n)</span>
+                    <span class="timestamp">18:04</span>
+                    <div>nao</div> 
+            </div>
+            <div class="message">
+                <span class="reply-button">Reply</span>
+                <span class="username">auryy</span>
+                    <span class="timestamp">18:10</span>
+                    <div>morre</div> 
+            </div>
         </div>
         <div class="message-input">
             <textarea id="message-input" placeholder="Digite sua mensagem..."></textarea>
@@ -297,9 +422,10 @@
         const user = getCookie("user");
         const tokenaes = getCookie("tokenaes");
 
-        if (!user || !tokenaes) {
-            window.location.href = "login.html"; // Redireciona para o login se não estiver autenticado
-        }
+        // Temporariamente comentado por questões de modificação
+        // if (!user || !tokenaes) {
+        //     window.location.href = "login.html"; // Redireciona para o login se não estiver autenticado
+        // }
 
         let currentServerId = null;
         let currentChannelId = null;
@@ -383,6 +509,7 @@
                 const messageElement = document.createElement("div");
                 messageElement.className = "message";
                 messageElement.innerHTML = `
+                    <span class="reply-button">Reply</span>
                     <span class="username">${username}</span>
                     <span class="timestamp">${new Date(message.timestamp).toLocaleTimeString()}</span>
                     <div>${renderMarkdown(message.message)}</div>
@@ -420,6 +547,33 @@
                 }
             }
         });
+
+        // Exibe o reply // EM TESTE!
+            // replyBtn = document.querySelectorAll('.reply-button')
+            // replyBtn.forEach(button => {
+            //     button.addEventListener('click', () => {
+            //         const messageContainer = button.closest('.message');
+            //         const username = messageContainer.querySelector('.username').textContent;
+            //         const messageInputContainer = document.querySelector('.message-input');
+            //         const messageInput = document.getElementById('message-input');
+            //         if (!messageInputContainer || !messageInput) return;
+            //         const existingReplyBox = document.querySelector('.reply-box');
+            //         if (existingReplyBox) {
+            //             existingReplyBox.remove();
+            //         }
+            //         const replyBox = document.createElement("div");
+            //             replyBox.className = "reply-box";
+            //             replyBox.innerHTML = `
+            //             <p>Respondendo para <span style="color: #72da9a; font-weight: bold">${username}</span></p><p class="close-reply">X</p>
+            //             `;
+            //         messageInputContainer.insertBefore(replyBox, messageInputContainer.firstChild);
+            //         const closeReply = document.querySelector('.close-reply');
+            //         closeReply.addEventListener('click', () => {
+            //             replyBox.remove();
+            //         })
+            //         messageInput.focus();
+            //     })
+            // })
 
         // Recebe nova mensagem
         socket.on("new-message", async (message) => {
