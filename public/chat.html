@@ -313,18 +313,6 @@
         </div>
         <div id="servers-list">
             <!-- Servidores serão carregados aqui -->
-            <div class="server">
-                Server do pedrinho
-            </div>
-            <div class="server">
-                Panelinha braba
-            </div>
-            <div class="server">
-                +18
-            </div>
-            <div class="server">
-                Os patos
-            </div>
         </div>
         <hr>
         <h5>Canais</h5>
@@ -335,9 +323,6 @@
         </div>
         <div id="channels-list">
             <!-- Canais serão carregados aqui -->
-            <div class="channel">
-                Rolas trevosas
-            </div>
         </div>
         <button class="create-button" id="show-create-server">Criar Servidor</button>
         <button class="create-button" id="show-create-channel" style="display: none;">Criar Canal</button>
@@ -347,54 +332,6 @@
     <div class="main-content">
         <div class="messages" id="messages">
             <!-- Mensagens serão carregadas aqui -->
-            <div class="message">
-                <span class="reply-button">Reply</span>
-                <span class="username">pedro</span>
-                    <span class="timestamp">17:09</span>
-                    <div>odeio OpenSource</div> 
-            </div>
-            <div class="message">
-                <span class="reply-button">Reply</span>
-                <span class="username">kael</span>
-                    <span class="timestamp">17:34</span>
-                    <div>amo OpenSource</div> 
-            </div>
-            <div class="message">
-                <span class="reply-button">Reply</span>
-                <span class="username">Humberto (op3n)</span>
-                    <span class="timestamp">17:36</span>
-                    <div>amo OpenSource</div> 
-            </div>
-            <div class="message">
-                <span class="reply-button">Reply</span>
-                <span class="username">auryy</span>
-                    <span class="timestamp">18:02</span>
-                    <div>que?</div> 
-            </div>
-            <div class="message">
-                <span class="reply-button">Reply</span>
-                <span class="username">Humberto (op3n)</span>
-                    <span class="timestamp">18:02</span>
-                    <div>amo OpenSource</div> 
-            </div>
-            <div class="message">
-                <span class="reply-button">Reply</span>
-                <span class="username">auryy</span>
-                    <span class="timestamp">18:03</span>
-                    <div>tbm amo agora cala a boca</div> 
-            </div>
-            <div class="message">
-                <span class="reply-button">Reply</span>
-                <span class="username">Humberto (op3n)</span>
-                    <span class="timestamp">18:04</span>
-                    <div>nao</div> 
-            </div>
-            <div class="message">
-                <span class="reply-button">Reply</span>
-                <span class="username">auryy</span>
-                    <span class="timestamp">18:10</span>
-                    <div>morre</div> 
-            </div>
         </div>
         <div class="message-input">
             <textarea id="message-input" placeholder="Digite sua mensagem..."></textarea>
@@ -422,10 +359,10 @@
         const user = getCookie("user");
         const tokenaes = getCookie("tokenaes");
 
-        // Temporariamente comentado por questões de modificação
-        // if (!user || !tokenaes) {
-        //     window.location.href = "login.html"; // Redireciona para o login se não estiver autenticado
-        // }
+
+        if (!user || !tokenaes) {
+            window.location.href = "login.html"; // Redireciona para o login se não estiver autenticado
+        }
 
         let currentServerId = null;
         let currentChannelId = null;
@@ -548,7 +485,7 @@
             }
         });
 
-        // Exibe o reply // EM TESTE!
+        // Exibe o reply // EM PRODUÇÃO!
             // replyBtn = document.querySelectorAll('.reply-button')
             // replyBtn.forEach(button => {
             //     button.addEventListener('click', () => {
