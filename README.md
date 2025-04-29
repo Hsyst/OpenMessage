@@ -155,7 +155,8 @@ Agradecemos pela sua escolha, e estamos abertos para melhorias... Achou um bug? 
 Esse projeto está sob as condições da licença [unlicense](./LICENSE).
 
 # Créditos
-Esse projeto foi criado pelo [op3n/op3ny](https://github.com/op3ny).
+Esse projeto foi criado e idealizado pelo [op3n/op3ny](https://github.com/op3ny).
+Design refeito pela [AuryChar/aury_dev](https://github.com/AuryChar)
 
 # Hsyst
 A Hsyst Project... Bye!
