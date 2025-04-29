@@ -1,51 +1,75 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en" style="background: #667146;">
+<html lang="en">
 
 <head>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>openmessage</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Bootstrap-Chat.css">
-    <link rel="stylesheet" href="assets/css/Features-Cards-icons.css">
+    <title>OpenMessage</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/tailwind/output.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body style="background: #1cbbd0;">
-    <section class="py-4 py-xl-5">
-        <div class="container">
-            <div class="text-center p-4 p-lg-5">
-                <p class="fw-bold text-primary mb-2">Bem Vindo(a) ao</p>
-                <h1 class="fw-bold mb-4">OpenMessage<br>By: Hsyst (op3n/op3ny)</h1><a href="/chat.html"><button class="btn btn-primary fs-5 me-2 py-2 px-4" type="button">Comece a enviar OpenMessages!</button></a><a href="https://hsyst.xyz"><button class="btn btn-primary fs-5 me-2 py-2 px-4" type="button">Voltar a página principal</button></a>
+<body class="bg-[#121212]">
+    <nav class="bg-[#27262e] w-full flex items-center justify-between sm:justify-evenly p-3 sticky top-0 z-50">
+        <a href="https://hsyst.xyz/">
+            <div class="flex items-center justify-center gap-2">
+                <img src="assets/logo/logo.png" alt="Hsyst Logo" class="w-8 h-8 rounded-md">
+                <h1 class="text-2xl text-white font-bold hidden sm:block">Hsyst Org</h1>
             </div>
+        </a>
+        <h1 class="text-2xl text-white font-bold"><span class="text-[#28a745]">Open</span>Message</h1>
+    </nav>
+    <div class="w-full h-[90vh] bg-gradient-to-tl from-[#121212] to-[#1a1a1a] flex flex-col items-center justify-center gap-10"> 
+        <div class="flex flex-col items-center justify-center">
+            <h1 class="text-2xl text-white">Bem-Vindo(a) ao</h1>
+            <h1 class="text-5xl font-extrabold text-[#28a745] scale-80 sm:scale-100">OpenMessage</h1>
         </div>
-    </section>
-    <div class="container py-4 py-xl-5">
-        <div class="row mb-5">
-            <div class="col-md-8 col-xl-6 text-center mx-auto">
-                <h2>Sobre o OpenMessage</h2>
-                <p class="w-lg-50">O OpenMessage é um chat seguro e OpenSource, criado pelo op3n/op3ny (Humberto). O OpenMessage tem como objetivo, te permitir tranquilamente ter um chat para sua empresa, ou para uso pessoal, ao qual seja seguro e eficiente para atender as suas demandas. Além disso, ele tem um visual moderno e fácil de usar!</p>
-            </div>
+        <div class="flex flex-col items-center justify-center gap-5">
+            <a href="login.html"><button class="bg-[#28a745] border-2 border-[#28a745] p-2.5 rounded-full scale-80 sm:scale-100 cursor-pointer flex items-center justify-center gap-2 font-bold transition-all ease-in-out hover:bg-[#228138] hover:border-[#228138]"><i class='bx bx-conversation'></i><p>Comece a enviar OpenMessages!</p></button></a>
         </div>
     </div>
-    <div class="container py-4 py-xl-5">
-        <div class="row mb-5">
-            <div class="col-md-8 col-xl-6 text-center mx-auto">
-                <h2>Como utilizar?</h2>
-                <p class="w-lg-50">Bem simples! Na página inicial, clique em "Comece a enviar OpenMessages!", em seguida, crie um nickname, em seguida, guarde a "key" que foi te passada, e pronto! Você já pode entrar em sua conta com a key, e começar a usar!</p>
+    <div class="bg-[#27262e] w-full h-[90vh] flex flex-col items-center justify-center">
+        <div class="flex flex-col items-center justify-center max-w-[40em] gap-5">
+            <h1 class="text-3xl font-extrabold text-white text-center"><span class="underline decoration-[#28a745]">Sobre</span> o OpenMessage</h1>
+            <p class="text-white text-center w-[80%] sm:w-[40em]">
+                O <span class="font-bold underline decoration-[#28a745]">OpenMessage</span> é um chat seguro e <span class="font-extrabold">OpenSource</span>, criado pelo <span class="font-bold underline decoration-[#28a745]">op3n/op3ny (Humberto)</span>, um design renovado pela <span class="font-bold underline decoration-[#28a745]">AuryChar/aury_dev (Aurora)</span>. O OpenMessage tem como objetivo, te permitir tranquilamente <span class="font-extrabold">ter um chat para sua empresa, ou para uso pessoal</span>, ao qual seja seguro e eficiente para atender as suas demandas. Além disso, ele tem um <span class="font-extrabold">visual moderno e fácil de usar!</span>
+            </p>
+        </div>
+    </div>
+    <div class="w-full h-[90vh] bg-gradient-to-tl from-[#121212] to-[#1a1a1a]  flex flex-col items-center justify-center">
+        <div class="flex flex-col items-center justify-center max-w-[40em] gap-5">
+            <h1 class="text-3xl font-extrabold text-white text-center"><span class="underline decoration-[#28a745]">Como</span> utilizar?</h1>
+            <p class="text-white text-center w-[80%] sm:w-[40em]">
+                Bem <span class="font-extrabold">simples</span>! Clique em <span class="font-extrabold">"Comece a enviar OpenMessages!"</span>, crie um nickname, em seguida, guarde a "key" que foi te passada, e pronto! Você já pode entrar em sua conta com a key, e começar a usar!
+            </p>
+            <a href="login.html"><button class="bg-transparent border-1 border-white text-white scale-80 sm:scale-100 p-2.5 rounded-full cursor-pointer flex items-center justify-center gap-2 font-bold transition-all ease-in-out hover:bg-white hover:text-black"><i class='bx bx-conversation'></i><p>Comece a enviar OpenMessages!</p></button></a>
+        </div>
+    </div>
+    <footer>
+        <div class="bg-[#27262e] w-full min-h-[30vh] flex items-center justify-center border-t-1 border-t-fuchsia-500">
+            <div class="w-[80%] h-full flex flex-col items-center">
+                <div class="flex w-full items-center justify-center flex-col md:flex-row gap-5 p-4">
+                    <div class="flex flex-col gap-4">
+                        <h1 class="text-lg text-[#28a745]">Hsyst Org</h1>
+                        <p class="text-sm text-gray-400">Organização dedicada ao desenvolvimento de projetos open-source inovadores e colaborativos.</p>
+                    </div>
+                    <div class="flex w-full justify-evenly flex-col items-start md:flex-row gap-3">
+                        <div class="flex flex-col gap-3">
+                            <h1 class="text-lg text-white">Contato</h1>
+                            <p class="text-sm text-gray-400">op3n@hsyst.xyz</p>
+                            <p class="text-sm text-gray-400">github.com/Hsyst</p>
+                            <p class="text-sm text-gray-400">discord.gg/dWWVsngtBx</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full h-[20%] flex items-center border-t-1 border-t-fuchsia-900">
+                    <p class="text-sm text-gray-400">© 2025 Hsyst Org. Todos os direitos reservados.</p>
+                </div>
             </div>
         </div>
-        <footer class="text-center">
-            <div class="container text-muted py-4 py-lg-5">
-                <ul class="list-inline">
-                    <li class="list-inline-item me-4"><a class="link-secondary" href="https://hsyst.xyz">Hsyst's Website</a></li>
-                    <li class="list-inline-item me-4"><a class="link-secondary" href="https://github.com/Hsyst">Hsyst's GitHub</a></li>
-                    <li class="list-inline-item"><a class="link-secondary" href="https://github.com/op3ny">op3ny's Github</a></li>
-                </ul>
-                <p class="mb-0">Copyright © 2025 Hsyst</p>
-            </div>
-        </footer>
-    </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </footer>
 </body>
 
 </html>
