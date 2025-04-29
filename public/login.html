@@ -1,57 +1,38 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en" style="background: #3c675d;">
-
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Login - openmessage</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Bootstrap-Chat.css">
-    <link rel="stylesheet" href="assets/css/Features-Cards-icons.css">
+    <link rel="stylesheet" href="assets/tailwind/output.css">
 </head>
 
-<body style="background: rgb(60,103,93);">
-    <section class="position-relative py-4 py-xl-5" style="background: #3c675d;">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h2>Bem Vindo(a) de volta!</h2>
-                    <p class="w-lg-50">Insira suas credenciais a seguir:</p>
-                </div>
+<body class="bg-[#121212] text-white">
+    <nav class="bg-[#27262e] w-full flex items-center justify-between sm:justify-evenly p-3 sticky top-0 z-50">
+        <a href="https://hsyst.xyz/">
+            <div class="flex items-center justify-center gap-2">
+                <img src="assets/logo/logo.png" alt="Hsyst Logo" class="w-8 h-8 rounded-md">
+                <h1 class="text-2xl font-bold">Hsyst Org</h1>
             </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-6 col-xl-4">
-                    <div class="card mb-5">
-                        <div class="card-body d-flex flex-column align-items-center">
-                            <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person-walking">
-                                    <path d="M9.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M6.44 3.752A.75.75 0 0 1 7 3.5h1.445c.742 0 1.32.643 1.243 1.38l-.43 4.083a1.75 1.75 0 0 1-.088.395l-.318.906.213.242a.75.75 0 0 1 .114.175l2 4.25a.75.75 0 1 1-1.357.638l-1.956-4.154-1.68-1.921A.75.75 0 0 1 6 8.96l.138-2.613-.435.489-.464 2.786a.75.75 0 1 1-1.48-.246l.5-3a.75.75 0 0 1 .18-.375l2-2.25Z"></path>
-                                    <path d="M6.25 11.745v-1.418l1.204 1.375.261.524a.75.75 0 0 1-.12.231l-2.5 3.25a.75.75 0 1 1-1.19-.914zm4.22-4.215-.494-.494.205-1.843a1.93 1.93 0 0 0 .006-.067l1.124 1.124h1.44a.75.75 0 0 1 0 1.5H11a.75.75 0 0 1-.531-.22Z"></path>
-                                </svg>
-                            </div>
-                            <form id="login-form" class="text-center" method="post">
-                                <div class="mb-3">
-                                    <input class="form-control" type="text" id="nick" name="nick" placeholder="Nickname" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input class="form-control" type="password" id="secretkey" name="secretkey" placeholder="Chave Secreta" required>
-                                </div>
-                                <div class="mb-3">
-                                    <button class="btn btn-primary d-block w-100" type="submit">Login</button>
-                                </div>
-                                <!-- Mensagens de sucesso e erro -->
-                                <p id="success-message" style="color: rgb(35,156,24); display: none;">Login bem-sucedido! Redirecionando...</p>
-                                <p id="error-message" style="color: rgb(255,0,0); display: none;">Erro ao fazer login. Verifique suas credenciais.</p>
-                            </form>
-                            <a href="register.html">Ainda não tem uma conta? Registre-se!</a>
-                        </div>
-                    </div>
-                </div>
+        </a>
+    </nav>
+    <div class="w-[100vw] h-[100dvh] flex items-center justify-center bg-gradient-to-tl from-[#121212] to-[#1a1a1a]">
+        <div class="w-[90vw] sm:w-[500px] bg-[#27262e] p-5 rounded-md shadow-lg flex flex-col items-center gap-2">
+            <h1 class="text-3xl font-bold"><span class="underline decoration-[#28a745]">Bem-vindo(a)</span> de volta!</h1>
+            <h3 class="text-base">Insira suas <span class="text-[#28a745] font-bold">credenciais</span> para continuar.</h3>
+            <form id="login-form" class="w-full flex flex-col items-center gap-2">
+                <input type="text" id="nick" placeholder="Nick" class="w-full p-2 rounded-md bg-[#1a1a1a] border border-[#28a745] text-white focus:outline-none focus:ring-2 focus:ring-[#28a745]">
+                <input type="password" id="secretkey" placeholder="Secret Key" class="w-full p-2 rounded-md bg-[#1a1a1a] border border-[#28a745] text-white focus:outline-none focus:ring-2 focus:ring-[#28a745]">
+                <button type="submit" class="w-full p-2 rounded-md bg-[#28a745] text-white font-bold hover:bg-[#218838] transition duration-200">Entrar</button>
+            </form>
+            <div id="success-message" class="hidden text-green-500 mt-2">Login bem-sucedido! Redirecionando...</div>
+            <div id="error-message" class="hidden text-red-500 mt-2">Erro ao fazer login. Verifique suas credenciais.</div>
+            <div class="mt-5">
+                <p class="text-sm">Não tem uma conta? <a href="register.html" class="text-[#28a745] font-bold">Crie uma agora!</a></p>
             </div>
         </div>
-    </section>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </div>
     <script>
         // Função para enviar o formulário de login
         document.getElementById("login-form").addEventListener("submit", async (e) => {
