@@ -1,53 +1,41 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en" style="background: #3c675d;">
-
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Registro - openmessage</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Bootstrap-Chat.css">
-    <link rel="stylesheet" href="assets/css/Features-Cards-icons.css">
+    <link rel="stylesheet" href="assets/tailwind/output.css">
 </head>
 
-<body style="background: rgb(60,103,93);">
-    <section class="position-relative py-4 py-xl-5" style="background: #3c675d;">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h2>Bem vindo(a)!</h2>
-                    <p class="w-lg-50">Essa é sua primeira vez aqui, certo? Relaxa que é bem fácil criar uma conta!</p>
-                </div>
+<body class="bg-[#121212] text-white">
+    <nav class="bg-[#27262e] w-full flex items-center justify-between sm:justify-evenly p-3 sticky top-0 z-50">
+        <a href="https://hsyst.xyz/">
+            <div class="flex items-center justify-center gap-2">
+                <img src="assets/logo/logo.png" alt="Hsyst Logo" class="w-8 h-8 rounded-md">
+                <h1 class="text-2xl font-bold">Hsyst Org</h1>
             </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-6 col-xl-4">
-                    <div class="card mb-5">
-                        <div class="card-body d-flex flex-column align-items-center">
-                            <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-shield-lock-fill">
-                                    <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0m0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5"></path>
-                                </svg>
-                            </div>
-                            <form id="register-form" class="text-center" method="post">
-                                <div class="mb-3">
-                                    <input class="form-control" type="text" id="nick" name="nick" placeholder="Nickname" required>
-                                </div>
-                                <div class="mb-3">
-                                    <button class="btn btn-primary d-block w-100" type="submit">Registe-se!</button>
-                                </div>
-                                <!-- Mensagens de sucesso e erro -->
-                                <p id="success-message" style="color: rgb(35,156,24); display: none;">Conta criada com sucesso! Chave secreta: <span id="secret-key"></span>. Lembre-se de guardar isso, é importante para realizar o login.</p>
-                                <p id="error-message" style="color: rgb(255,0,0); display: none;">Erro ao criar a conta. Tente novamente.</p>
-                            </form>
-                            <a href="login.html">Já tem uma conta? Realize o Login!</a>
-                        </div>
-                    </div>
-                </div>
+        </a>
+    </nav>
+    <div class="w-[100vw] h-[100dvh] flex items-center justify-center bg-gradient-to-tl from-[#121212] to-[#1a1a1a]">
+        <div class="w-[90vw] sm:w-[500px] bg-[#27262e] p-5 rounded-md shadow-lg flex flex-col items-center gap-2">
+            <h1 class="text-3xl font-bold"><span class="underline decoration-[#28a745]">Bem-vindo(a)!</span></h1>
+            <h3 class="text-base">Essa é sua <span class="text-[#28a745] font-bold">primeira vez aqui</span>, certo? Relaxa que é bem fácil criar uma conta!</h3>
+            <form id="register-form" class="w-full flex flex-col items-center gap-2">
+                <input type="text" id="nick" placeholder="Digite seu nickname" class="w-full p-2 bg-[#1a1a1a] text-white border border-[#28a745] rounded-md focus:outline-none focus:ring-2 focus:ring-[#28a745]" required>
+                <button type="submit" class="w-full p-2 bg-[#28a745] text-white font-bold rounded-md hover:bg-[#218838] transition duration-200">Registrar</button>
+            </form>
+            <div id="success-message" class="hidden w-full p-2 text-white rounded-md text-center">
+                Registro bem-sucedido! Sua chave secreta é: <span id="secret-key" class="font-bold text-[#28a745]"></span>
+            </div>
+            <div id="error-message" class="hidden w-full p-2 text-red-500 rounded-md text-center">
+                Erro ao registrar. Tente novamente.
+            </div>
+            <div class="mt-5">
+                <p class="text-sm">Já tem uma conta? <a href="login.html" class="text-[#28a745] font-bold">Entre agora!</a></p>
             </div>
         </div>
-    </section>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </div>
     <script>
         // Função para enviar o formulário de registro
         document.getElementById("register-form").addEventListener("submit", async (e) => {
