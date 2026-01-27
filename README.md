@@ -1,3 +1,12 @@
+# ---
+
+# ATENÇÃO ⚠️
+## `Mudamos de endereço`
+
+Por conta da mudança de organização da Hsyst, a partir de agora, esse projeto e suas atualizações estão disponível no GitHub do `Hsyst Essentials`. [Clique Aqui!](https://github.com/Hsyst-Essentials/OpenMessage)
+
+# ---
+
 # OpenMessage
 Um serviço de mensagens OpenSource!
 
